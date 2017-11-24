@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %} BigEyeGuy {% endblock %}
+
+
+{% block content %}
+<div class = "row">
+    <h1>BigEyeGuy Blog</h1>
+    <div class="col-md-8">
+
+        {% for post in posts %}
+            <div class="panel panel-info">
+                <!-- <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"> -->
+                    <h2 class="panel-heading"> {{ post.title }} </h2>
+                    <div class="panel-body">
+                    <p> {{ post.body[:200] }} </p>
+                    <a href="{{ url_for('article', slug=post.slug) }}">Read More &rarr;</a>
+                    </div>
+
+                <div class="panel-footer text-muted">
+                    Posted on {{ post.posted }} by
+                    <a href="#">BigEyeGuy</a>
+                </div>
+            </div>
+        {% endfor %}
+
+        <hr />
+
+        <div class="post-paginate">
+            <a href="#">&lt;&lt; Newer posts</a>
+                |
+            <a href="#"> Older posts &gt;&gt;</a>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+        <!-- Side Widget -->
+        <div class="card my-4">
+            <h4 class="card-header">Resources</h4>
+            <div class="card-body">
+                <ul>
+                    <li><a href="{{ url_for('about') }}">About Me</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Useful Links</a></li>
+                    <li><a href="#">Gaming & VR</a></li>
+                </ul>
+
+                <p>You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!</p>
+            </div>
+                <hr />
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
